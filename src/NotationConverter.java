@@ -6,23 +6,23 @@ public class NotationConverter {
     public static Stack operators = new Stack();
 
     public static void main(String argv[]) throws IOException {
-        String infix;
+        String expression;
         // create an input stream object
         BufferedReader keyboard = new BufferedReader(new InputStreamReader(System.in));
         // get input from user
-        System.out.print("\nEnter the infix expression you want to convert: ");
-        infix = keyboard.readLine();
+        System.out.print("\nEnter the expression expression you want to convert: ");
+        expression = keyboard.readLine();
         // output as postfix
-        System.out.println("Postfix expression for the given infix expression is:" + toPostfix(infix));
+        System.out.println("Postfix expression for the given expression expression is:" + toPostfix(expression));
     }
 
-    // converts an infix expression to postfix
-    private static String toPostfix(String infix) {
+    // converts an expression infix to postfix
+    private static String toPostfix(String expression) {
         char symbol;
         String postfix = "";
         // while there is input to be read
-        for (int i = 0; i < infix.length(); ++i) {
-            symbol = infix.charAt(i);
+        for (int i = 0; i < expression.length(); ++i) {
+            symbol = expression.charAt(i);
             // if it's an operand, add it to the string
             if (Character.isLetter(symbol))
                 postfix = postfix + symbol;
@@ -46,27 +46,27 @@ public class NotationConverter {
         return postfix;
     }
 
-    private static String toPrefix(String infix) {
+    private static String toPrefix(String expression) {
         char symbol;
         String pretfix = "";
         // while there is input to be read
-        for (int i = 0; i < infix.length(); ++i) {
-            symbol = infix.charAt(i);
+        for (int i = 0; i < expression.length(); ++i) {
+            symbol = expression.charAt(i);
             // if it's an operand, add it to the string
             if (Character.isLetter(symbol))
-                pretfix = pretfix + symbol;
+                pretfix = symbol + pretfix;
             // push (
             else if (symbol == '(') {
                 operators.push(symbol);
             } else if (symbol == ')') { // push everything back to (
                 while (operators.peek() != '(') {
-                    pretfix = pretfix + operators.pop();
+                    pretfix = operators.pop() + pretfix;
                 }
                 operators.pop(); // remove '('
             } else {
                 // print operators occurring before it that have greater precedence
                 while (!operators.isEmpty() && !(operators.peek() == '(') && prec(symbol) <= prec(operators.peek()))
-                    pretfix = pretfix + operators.pop();
+                    pretfix = operators.pop() + pretfix;
                 operators.push(symbol);
             }
         }
