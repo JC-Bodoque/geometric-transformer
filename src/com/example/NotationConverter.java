@@ -1,3 +1,5 @@
+package com.example;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -13,7 +15,8 @@ public class NotationConverter {
         System.out.print("\nEnter the expression expression you want to convert: ");
         expression = keyboard.readLine();
         // output as postfix
-        System.out.println("Postfix expression for the given expression expression is:" + toPostfix(expression));
+        System.out.println("Postfix expression for the given infix expression is:" + toPostfix(expression));
+        System.out.println("Pretfix expression for the given infix expression is:" + toPrefix(expression));
     }
 
     // converts an expression infix to postfix
