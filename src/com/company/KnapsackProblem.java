@@ -1,17 +1,18 @@
 package com.company;
 
 /**
- * A Dynamic Programming based solution for 0-1 Knapsack problem
+ * A Dynamic Programming based solution for Knapsack Problem
  */
 public class KnapsackProblem {
-    
+
     // A utility function that returns maximum of two integers
     public static int max(int a, int b) {
         return (a > b) ? a : b;
     }
 
-    // Returns the maximum value that can be put in a knapsack
-    // of capacity W
+    /**
+     * Returns the maximum value that can be put in a knapsack of capacity W
+     */
     public static int knapsack(int W, int wt[], int val[], int n) {
         int i, w;
         int K[][] = new int[n + 1][W + 1];
@@ -30,9 +31,10 @@ public class KnapsackProblem {
         return K[n][W];
     }
 
-    // Returns the maximum value that can be put in a knapsack
-    // of capacity W
-    // A Dynamic Programming based solution for 0-1 Knapsack problem
+    /**
+     * A Dynamic Programming based solution for Knapsack Problem. {@link KnapsackProblem}s the maximum
+     * value that can be put in a knapsack of capacity W
+     */
     public static int knapSack(int W, int wt[], int val[], int n) {
         int i, w;
         int K[][] = new int[n + 1][W + 1];
