@@ -20,7 +20,7 @@ public class Transformer extends JFrame {
     int x = this.getWidth(), y = this.getHeight();
 
     public Transformer() {
-        super("Trasladar, Escalar y Rotar");
+        super("Geometric transformer");
         setSize(800, 700);
         setLocationRelativeTo(null);
         setResizable(false);
@@ -282,8 +282,6 @@ public class Transformer extends JFrame {
                 }
                 g.setColor(Color.BLUE);
                 g.drawPolygon(escalar);
-//                g.setColor(Color.PINK);
-//                g.drawString("Fig. Escalar", puntos[puntos.length - 1][0] + Tx, puntos[puntos.length - 1][1] - Ty);
             }
         });
         btn_rotar.addActionListener(new ActionListener() {
